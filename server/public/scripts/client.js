@@ -10,8 +10,18 @@ function addItem(){
     }
     console.log( 'sending:', objectToSend );
     // make AJAX POST of obj
-    // update DOM
-    // catch any errors
+    $.ajax({
+        type: 'POST',
+        url: '/inventory',
+        data: objectToSend
+    }).then( function( response ){
+        console.log( 'back from POST:', response );
+        // update DOM
+    }).catch( function( err ){
+        // catch any errors
+        console.log( err );
+        alert( 'error getting inventory' );
+    })
 } // end addItem
 
 function onReady(){
